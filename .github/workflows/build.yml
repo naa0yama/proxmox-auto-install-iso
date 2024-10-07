@@ -75,7 +75,7 @@ jobs:
             const prereleases = __prereleases.data
 
             for (const index in prereleases) {
-              if (prereleases[index].prerelease == true) {
+              if (prereleases[index].prerelease == true || prereleases[index].draft == true) {
                 console.log('delte pre-release ' + prereleases[index]['id'] + '\t' + prereleases[index]['name'])
 
                 await github.rest.repos.deleteRelease({
