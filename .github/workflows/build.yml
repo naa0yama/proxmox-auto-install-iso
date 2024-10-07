@@ -54,21 +54,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and push
-        uses: docker/build-push-action@v6.9.0
-        with:
-          context: .
-          file: Dockerfile
-          push: false
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          tags: tmp
-          labels: latest
-
       - name: Build auto install ISO from Proxmox VE
         run: |+
           set -eux
 
+          docker build -t tmp .
           docker run --rm -u $(id -u):$(id -g) -v $PWD/answers:/answers -v $PWD/dist:/dist tmp
 
       - name: Cleanup pre-releases
