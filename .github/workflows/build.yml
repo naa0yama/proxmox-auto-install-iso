@@ -63,7 +63,7 @@ jobs:
 
       - name: Cleanup pre-releases
         uses: actions/github-script@v7.0.1
-        if: ${{ github.event.pull_request.merged == true }}
+        if: ${{ github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |+
@@ -89,7 +89,7 @@ jobs:
             console.log('end run')
 
       - name: Calculate the sha256sum
-        if: ${{ github.event.pull_request.merged == true }}
+        if: ${{ github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' }}
         working-directory: dist
         run: |+
           set -eux
@@ -99,7 +99,7 @@ jobs:
 
       - name: Pre-Release
         uses: softprops/action-gh-release@v2
-        if: ${{ github.event.pull_request.merged == true }}
+        if: ${{ github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' }}
         with:
           name: Proxmox VE ${{ env.PROXMOX_VERSION }} ${{ env.COMMIT_SHORT_SHA }}
           tag_name: ${{ env.COMMIT_SHORT_SHA }}
