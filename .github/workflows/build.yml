@@ -69,7 +69,7 @@ jobs:
         run: |+
           set -eux
 
-          docker run --rm -u $(id -u):$(id -g) -it -v $PWD/answers:/answers -v $PWD/dist:/dist tmp
+          docker run --rm -u $(id -u):$(id -g) -T -v $PWD/answers:/answers -v $PWD/dist:/dist tmp
 
       - name: Cleanup pre-releases
         uses: actions/github-script@v7.0.1
