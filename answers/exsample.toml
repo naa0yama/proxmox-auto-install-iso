@@ -1,0 +1,26 @@
+[global]
+keyboard = "en-us"
+country = "us"
+fqdn = "pve1.local"
+mailto = "mail@exsample.local"
+timezone = "Asia/Tokyo"
+root_password = "Admin1!"
+
+# root_ssh_keys = [
+#     "ssh-ed25519 AAAA..."
+# ]
+
+[network]
+source = "from-answer"
+cidr = "192.0.2.100/24"
+dns = "192.0.2.1"
+gateway = "192.0.2.1"
+
+# filter.ID_NET_NAME_MAC = "*00005E0053f0"
+filter.ID_NET_NAME = "eno1"
+
+[disk-setup]
+filesystem = "ext4"
+lvm.swapsize = 0
+lvm.maxvz = 0
+disk_list = ['sda']

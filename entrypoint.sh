@@ -12,9 +12,14 @@ if ! [ -f "/dist/proxmox-ve_${PROXMOX_VERSION}.iso" ]; then
     echo "${PROXMOX_ISO_SHA}  proxmox-ve_${PROXMOX_VERSION}.iso" | sha256sum --status -c -
 fi
 
-for host in "10.2.21.201"
+find /answers -maxdepth 1 -name '*.toml' | while read -r fname
 do
+    fname=$(basename "${fname}")
+    host="${fname%.*}"
+    
+    echo -e "Host ${host}\t\t Start =============================="
     proxmox-auto-install-assistant prepare-iso /dist/proxmox-ve_${PROXMOX_VERSION}.iso \
         --fetch-from iso --answer-file "/answers/${host}.toml" \
-        --output "/dist/proxmox-ve_auto_${PROXMOX_VERSION}_${host}.iso"
+        --output "/dist/proxmox-ve_${PROXMOX_VERSION}_auto_${host}.iso"
+    echo -e "Host ${host}\t\t End ================================"
 done
