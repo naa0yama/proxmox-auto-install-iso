@@ -1,0 +1,19 @@
+---
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+
+  categories:
+    - title: Features 🎉
+      labels: ['enhancement']
+    - title: Image
+      labels: ['core']
+    - title: Bug Fixes 🐌
+      labels: ['bug']
+    - title: Documentation 🗒️
+      labels: ['documentation']
+    - title: Dependency Updates 👒
+      labels: ['renovate']
+    - title: Other Changes
+      labels: ['*']
