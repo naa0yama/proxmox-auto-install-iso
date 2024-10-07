@@ -13,7 +13,20 @@ on:
       - reopened
       - synchronize
       - auto_merge_enabled
-  workflow_dispatch: {}
+  workflow_dispatch:
+    pve_version:
+      version:
+        required: true
+        default: "8.2-2"
+        description: Proxmox VE version
+        type: string
+
+    pve_sha256:
+      version:
+        required: true
+        default: "c96ad84eacbbcef299ab8f407f9602f832abb5ceb08a9aa288c1e1164df2da97"
+        description: Proxmox VE SHA256
+        type: string
 
 jobs:
   builds:
@@ -25,8 +38,8 @@ jobs:
       packages: write
     env:
       COMMIT_SHORT_SHA: null
-      PROXMOX_VERSION: "8.2-2"
-      PROXMOX_ISO_SHA: "c96ad84eacbbcef299ab8f407f9602f832abb5ceb08a9aa288c1e1164df2da97"
+      PROXMOX_VERSION: ${{ inputs.pve_version }}
+      PROXMOX_ISO_SHA: ${{ inputs.pve_sha256 }}
 
     steps:
       - name: Checkout from repository
