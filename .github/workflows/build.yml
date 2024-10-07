@@ -108,5 +108,5 @@ jobs:
           prerelease: false
           make_latest: true
           files: |
-            ./dist/proxmox-ve_${PROXMOX_VERSION}_auto_*.iso
+            ./dist/proxmox-ve_${{ env.PROXMOX_VERSION }}_auto_*.iso
             ./dist/sha256sum.txt
