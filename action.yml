@@ -1,0 +1,21 @@
+name: proxmox-auto-install-iso
+description: Create an automated installation ISO for Proxmox VE
+inputs:
+  pve_version:
+    required: true
+    default: null
+    description: Proxmox VE version
+    type: string
+
+  pve_sha256:
+    required: true
+    default: null
+    description: Proxmox VE SHA256
+    type: string
+
+runs:
+  using: 'docker'
+  image: ghcr.io/naa0yama/proxmox-auto-install-iso:latest
+  env:
+    PROXMOX_VERSION: ${{ inputs.pve_version }}
+    PROXMOX_ISO_SHA: ${{ inputs.pve_sha256 }}
