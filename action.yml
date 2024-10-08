@@ -14,8 +14,8 @@ inputs:
     type: string
 
 runs:
-  using: 'docker'
-  image: ghcr.io/naa0yama/proxmox-auto-install-iso:latest
+  using: docker
+  image: docker://ghcr.io/naa0yama/proxmox-auto-install-iso:latest
   env:
     PROXMOX_VERSION: ${{ inputs.pve_version }}
     PROXMOX_ISO_SHA: ${{ inputs.pve_sha256 }}
