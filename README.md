@@ -8,10 +8,6 @@ Create an automated installation ISO for Proxmox VE
 
 The `answers` directory supports multiple file placements, so you can create an ISO by placing as many files as you need.
 
-## local build
+## use
 
-```bash
-docker build -t tmp .
-docker run --rm -u $(id -u):$(id -g) -it -v $PWD/answers:/answers -v $PWD/dist:/dist tmp
-
-```
+Please refer to [here](.github/workflows/release.yml) for usage

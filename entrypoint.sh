@@ -4,8 +4,6 @@ set -eux
 PROXMOX_VERSION=${PROXMOX_VERSION:-8.2-2}
 PROXMOX_ISO_SHA=${PROXMOX_ISO_SHA:-c96ad84eacbbcef299ab8f407f9602f832abb5ceb08a9aa288c1e1164df2da97}
 
-ls -lah
-
 mkdir -p answers dist
 cd dist
 
@@ -13,6 +11,7 @@ if ! [ -f "dist/proxmox-ve_${PROXMOX_VERSION}.iso" ]; then
     aria2c https://enterprise.proxmox.com/iso/proxmox-ve_${PROXMOX_VERSION}.iso
     echo "${PROXMOX_ISO_SHA}  proxmox-ve_${PROXMOX_VERSION}.iso" | sha256sum --status -c -
 fi
+cd ..
 
 find answers -maxdepth 1 -name '*.toml' | while read -r fname
 do
