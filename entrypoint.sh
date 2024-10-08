@@ -4,9 +4,7 @@ set -eux
 PROXMOX_VERSION=${PROXMOX_VERSION:-8.2-2}
 PROXMOX_ISO_SHA=${PROXMOX_ISO_SHA:-c96ad84eacbbcef299ab8f407f9602f832abb5ceb08a9aa288c1e1164df2da97}
 
-if ! [ -z "${GITHUB_WORKSPACE}" ]; then
-    cd "${GITHUB_WORKSPACE}"
-fi
+ls -lah
 
 mkdir -p answers dist
 cd dist
