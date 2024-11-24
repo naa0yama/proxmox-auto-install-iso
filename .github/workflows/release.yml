@@ -8,13 +8,13 @@ on:
     inputs:
       pve_version:
         required: true
-        default: "8.2-2"
+        default: "8.3-1"
         description: Proxmox VE version
         type: string
 
       pve_sha256:
         required: true
-        default: "c96ad84eacbbcef299ab8f407f9602f832abb5ceb08a9aa288c1e1164df2da97"
+        default: "b5c2d10d6492d2d763e648bc8562d0f77a90c39fac3a664e676e795735198b45"
         description: Proxmox VE SHA256
         type: string
 
